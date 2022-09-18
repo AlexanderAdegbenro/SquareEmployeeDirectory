@@ -8,11 +8,19 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @StateObject var viewModel = EmployeeViewModel()
+    
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+      
+        if viewModel.isLoading {
+            LoadingView()
+        } else {
+              EmployeeListView()
+        }
     }
 }
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
